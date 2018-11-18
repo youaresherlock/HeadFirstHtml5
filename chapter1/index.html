@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>My First JavaScript</title>
+</head>
+<body>
+    <!--
+        用于定义客户端脚本，比如JavaScript，在html4中type属性规定脚本的
+        MIME类型，html5中是可选的
+        浏览器加载页面时，还会加载JS代码，通常页面加载之后就开始执行这些
+        代码
+    -->
+    <script>
+        /*第一个JavaScript程序*/
+        var drink = "Energy Drink";
+        var lyrics = "";
+        var cans = 99;
+
+        while (cans > 0){
+            lyrics = lyrics + cans + " cans of "
+                + drink + " on the wall <br>";
+            lyrics = lyrics + cans + " cans of "
+                + drink + "<br>";
+            lyrics = lyrics + "Take one down, pass it around,<br>";
+
+            if(cans > 1){
+                lyrics = lyrics + "No more cans of "
+                    + drink + " on the wall <br>";
+            } else {
+                lyrics = lyrics + "No more cans of "
+                    + drink + " on the wall <br>";
+            }
+            cans = cans - 1;
+        }
+        document.write(lyrics);
+    </script>
+</body>
+</html>

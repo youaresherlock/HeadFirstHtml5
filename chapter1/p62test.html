@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Planets</title>
+    <script>
+        // //1.测试1
+        // var planet = document.getElementById("greenplanet");
+        // if( planet == null){
+        //     //dom没有完全创建，所以找不到对应id为"greenplanet"的元素
+        //     //我们需要让dom完全加载之后才执行这些代码
+        //     alert("为空!"); 
+        // }
+        // planet.innerHTML = "Red Alert: hit by phaser fire!";
+
+        //2.告诉浏览器只在页面加载之后才执行代码
+        function init() {
+            var planet = document.getElementById("greenplanet");
+            planet.innerHTML = "Red Alert: hit by phaser fire!";
+        }
+
+        /*
+        windows对象表示浏览器窗口，所以js全局对象、函数以及变量均自动成为window
+        对象的成员。全局变量是window对象的属性。全局函数是window对象的方法。
+        window.onload是一个事件，当文档内容完全加载完成会触发该事件。可以为此
+        事件注册事件处理函数，并将要执行的脚本代码放在事件处理函数中，于是就可以
+        避免获取不到对象的情况。
+        */
+        window.onload = init;
+    </script>
+</head>
+<body>
+    <h1>Green Planet</h1> 
+    <p id="greenplanet">All is well</p>
+    <h1>Red Planet</h1>
+    <p id="redplanet">Nothing to report</p>
+    <h1>Blue planet</h1>
+    <p id="blueplanet">All systems A-OK</p>
+</body>
+</html>
