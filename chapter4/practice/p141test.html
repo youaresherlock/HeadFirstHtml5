@@ -15,14 +15,34 @@
             title: "Plan 9 from Outer Space",
             genere: "Cult Classic",
             rating: 2,
-            showtimes: ["3:00pm", "7:00pm", "11:00pm"]
+            showtimes: ["3:00pm", "7:00pm", "11:00pm"],
+            getNextShowing: function() {
+                var now = new Date().getTime();
+                for(var i = 0; i < this.showtimes.length; i++){
+                    var showtime = getTimeFromString(this.showtimes[i]);
+                    if((showtime - now) < 0){
+                        return "Next showing of " + this.title + " is " + this.showtimes[i];
+                    }
+                }
+                return null;
+            }
         };
 
         var movie2 = {
             title: "Forbidden Planet",
             genre: "Classic Sci-fi",
             rating: 5,
-            showtimes: ["5:00pm", "9:00pm"]
+            showtimes: ["5:00pm", "9:00pm"],
+            getNextShowing: function() {
+                var now = new Date().getTime();
+                for(var i = 0; i < this.showtimes.length; i++){
+                    var showtime = getTimeFromString(this.showtimes[i]);
+                    if((showtime - now) < 0){
+                        return "Next showing of " + this.title + " is " + this.showtimes[i];
+                    }
+                }
+                return null;
+            }
         };
 
         function getNextShowing(movie) {
@@ -45,12 +65,61 @@
             return theTime.getTime();
         }
 
-        var nextShowing = getNextShowing(movie1);
+function Movie(title, genre, rating, showtimes){
+    this.title = title;
+    this.genre = genre;
+    this.rating = rating;
+    this.showtimes = showtimes;
+    this.getNextShowing = function() {
+        var now = new Date().getTime();
+        for(var i = 0; i < this.showtimes.length; i++){
+            var showtime = getTimeFromString(this.showtimes[i]);
+            if((showtime - now) > 0){
+                return "Next showing of " + this.title + " is " + this.showtimes[i];
+            }
+        }
+        return null;
+    };
+}
+
+        // var nextShowing = getNextShowing(movie1);
+        // alert(nextShowing);
+        // nextShowing = getNextShowing(movie2);
+        // alert(nextShowing);
+        var nextShowing = movie1.getNextShowing();
         alert(nextShowing);
-        nextShowing = getNextShowing(movie2);
+        var nextShowing = movie2.getNextShowing();
         alert(nextShowing);
         nextShowing = getNextShowing(banzaiMovie);
         alert(nextShowing);
+    /*
+    创建JavaScript对象
+    通过Javacript，你能够定义并创建自己的对象。
+    创建新对象有两种不同的方法:
+    1.定义并创建对象实例
+    2.使用函数来定义对象，然后创建新的对象实例
+
+    这个例子创建了独对象的一个新的实例，并向其添加了四个属性
+    person= new Object();
+    person.firstname = "Bill";
+    person.lastname = "Gates";
+    person.age = 56;
+    person.eyecolor = "blue";
+
+    使用对象构造器
+    function person(firstname, lastname, age, eyecolor){
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.age = age;
+        this.eyecolor = eyecoor;
+        //在构造器函数内部定义对象的方法
+        function changeName(name){
+            this.lastname = name;
+        }
+    }
+    有了对象构造器，就可以创建新的对象实例
+    var myFather =new person("Bill", "Gates", 56, "blue");
+    */
     </script>
 </head>
 <body>
