@@ -78,7 +78,7 @@ function showMap(coords) {
 	var googleLatAndLong = new google.maps.LatLng(coords.latitude, 
 												  coords.longitude);
 	var mapOptions = {
-		zoom: 10,
+		zoom: 21,
 		center: googleLatAndLong,
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 	};

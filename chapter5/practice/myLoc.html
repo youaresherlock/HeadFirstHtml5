@@ -2,16 +2,25 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Where am I?</title>
+    <title>Wherever you go, there you are</title>
     <script src="myLoc.js"></script>
+    <!-- 这里的sensor=true的参数表示使用地图同时使用我的位置-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDJW4jsPlNKgv6jFm3B5Edp5ywgdqLWdmc&sensor=true"></script>
     <link rel="stylesheet" href="myLoc.css">
 </head>
 <body>
+    <form>
+        <input type="button" id="watch" value="Watch me">
+        <input type="button" id="clearWatch" value="Clear watch">
+    </form>
     <div id="location">
         Your location will go here.
     </div>
     <div id="distance">
         Distance from WickedlySmart HQ will go here.
+    </div>
+    <div id="map">
+        
     </div>
 </body>
 </html>
