@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!-- <script src="mightygumball.js"></script> -->
+    <script>
+        //通过<script>标签获取其他不同域的服务器js文件获取数据
+    window.onload = test;
+    function test(sales) {
+        var salesDiv = document.getElementById("sales");
+    
+        for(var i = 0; i < sales.length; i++){
+            var sale = sales[i];
+            var div = document.createElement("div");
+            div.setAttribute("class", "saleItem");
+            div.innerHTML = sale.name + " sold " + sale.sales + " gumballs";
+            // appendChild()方法可向节点的子节点列表的末尾添加新的子节点
+            salesDiv.appendChild(div);
+        }
+    }
+    </script>
+    <script>
+        function animalSays(animal) {
+            alert(animal.type + " says " + animal.sound);
+        }
+    </script>
+    <!-- 服务器中的js脚本cat2.js内容是animalSays("cat", "meow");-->
+    <script src="https://www.wickedlysmart.com/hfhtml5/chapter6/cat3.js"></script>
+    <link rel="stylesheet" href="mightygumball.css">
+    <title>Mighty Gumball (JSON)</title>
+</head>
+<body>
+    <h1>Mighty Gumball Sales</h1>
+    <div id="sales">
+
+    </div>
+    <!-- 最后加载 -->
+    <script src="http://localhost/gumball/test.js"></script>
+</body>
+</html>

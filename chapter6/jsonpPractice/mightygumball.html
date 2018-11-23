@@ -1,0 +1,25 @@
+<!-- 我们利用JSONP(json with padding)，通过script标签来获取服务器的数据，进行跨域通信 -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <script src="mightygumball.js"></script>
+    <link rel="stylesheet" href="mightygumball.css">
+    <title>Mighty Gumball (JSON)</title>
+</head>
+<body>
+    <h1>Mighty Gumball Sales</h1>
+    <div id="sales">
+
+    </div>
+    <!-- 
+        最后加载, 可以看到是用get方法请求，这也是JSONP的缺点: 
+        只能GET不支持POST
+        callback是WEB服务器允许我们指定一个回调函数,我们js中的updateSales会接受
+        服务器发送过来的数据
+        浏览器遇到页面中的一个<script>标签时就会向src url发出一个http请求，JSON响应
+        的形式是一个字符串，浏览器会解析成JS对象
+    -->
+    <script src="http://gumball.wickedlysmart.com/?callback=updateSales"></script>
+</body>
+</html>
