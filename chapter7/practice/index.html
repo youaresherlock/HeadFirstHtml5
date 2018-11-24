@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <style>
+        canvas {
+            border: 1px solid black;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var canvas = document.getElementById("tshirtCanvas");
+
+            var context = canvas.getContext("2d");
+            context.fillStyle = "lightblue";
+            /*
+             * canvas提供了三种方法绘制矩形:
+             * fillRect(x, y, width, height) 绘制一个填充的矩形
+             * strokeRect(x, y, width, height) 绘制一个矩形的边框
+             * clearRect(x, y, width, height)清除指定矩形区域，让清除部分完全透明
+             */
+            // context.strokeRect(10, 10, 100, 100); 
+            context.fillRect(10, 10, 100, 100); //默认背景颜色是黑色
+        };
+    </script>
+    <title>Look What I Drew</title>
+</head>
+<body>
+    <!-- 画布元素的id,宽和高
+    建议在标记属性中指定宽度和高度，如果在CSS设置属性，就会使画布缩放
+    默认的，画布元素是300像素宽、150像素高
+    -->
+    <canvas id="tshirtCanvas" width="600" height="200">
+        Hey you, yes YOU, upgrade your browser!!
+    </canvas>
+</body>
+</html>
