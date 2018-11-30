@@ -34,9 +34,18 @@ window.onload = function() {
 	//video.onended = endedHandler;
 	video.addEventListener("play", processFrame, false);
 	video.addEventListener("ended", endedHandler, false);
+	video.addEventListener("error", errorHandler, false);
 
 	pushUnpushButtons("video1", []);
 	pushUnpushButtons("normal", []);
+}
+
+function errorHandler() {
+	var video = document.getElementById("video");
+	if(video.error) {
+		video.poster = "../images/technicaldifficulties.jpg";
+		alert(video.error.code);
+	}
 }
 
 function setEffect(e) {
