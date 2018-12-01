@@ -41,6 +41,24 @@ ul#stickies li span.sticky {
     font-size: 200%;
 }
 
+ul#stickies li img.delete {
+    position: absolute;
+    left: 158px;
+    top: 190px;
+    /*for IE*/
+    filter: alpha(opacity=0.3);
+    opacity: 0.1;
+    transition: opacity 1s;
+    -moz-transition: opacity 1s;	/* Firefox 4 */
+    -webkit-transition: opacity 1s;	/* Safari 和 Chrome */
+    -o-transition: opacity 1s;	/* Opera */
+}
+
+ul#stickies li img.delete:hover {
+    /*for IE*/
+    filter: alpha(opacity=1);
+    opacity: 1;
+}
 
 ul#stickies li:nth-child(even) {
     -webkit-transform: rotate(2deg);
@@ -80,5 +98,5 @@ ul#stickies li:hover {
 	-ms-transform: rotate(0deg) scale(1.25); /*Safari and Chrome*/
     transform: rotate(0deg) scale(1.25);
     background: linear-gradient(lightgoldenrodyellow, lightblue);
-	z-index: 10;
+    z-index: 10;
 }

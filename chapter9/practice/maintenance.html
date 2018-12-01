@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Maintenance</title>
+        <meta charset="utf-8">
+        <script>
+            /*
+            localStorage提供了两个方法清除本地存储
+            storage.removeItem(keyName);
+            storage.clear(); 清除同一个域中的所有本地存储
+            */
+            window.onload = function() {
+                var clearButton = document.getElementById("clear_button");
+                clearButton.onclick = clearStorage;
+            }
+
+            function clearStorage() {
+                localStorage.clear();
+            }
+        </script>
+    </head>
+    <body>
+        <from>
+            <input type="button" id="clear_button" value="Clear storage">
+        </from>
+    </body>
+</html>
