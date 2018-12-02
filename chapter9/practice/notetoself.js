@@ -32,8 +32,9 @@ function init() {
 
     for(var i = 0; i < stickiesArray.length; i++) {
         var key = stickiesArray[i];
-        var value = localStorage[key];
+        var value = JSON.parse(localStorage[key]);
         addStickyToDOM(key, value);
+
     }
 }
 
@@ -45,11 +46,20 @@ function createSticky() {
     }
     var stickiesArray = getStickiesArray();
     var currentDate = new Date();
+    //我们存储选择的sticky以及它对应的颜色，组成对象解析成JSON保存起来
+    var colorSelectObj = document.getElementById("note_color");
+    //selectedIndex属性可设置或返回下拉列表中被选选项的索引号
+    var index = colorSelectObj.selectedIndex;
+    var color = colorSelectObj[index].value;
     var key = "sticky_" + currentDate.getTime();
-    localStorage.setItem(key, value);
+    var stickyObj = {
+        "value": value,
+        "color": color
+    };
+    localStorage.setItem(key, JSON.stringify(stickyObj));
     stickiesArray.push(key);
     localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
-    addStickyToDOM(key, value);
+    addStickyToDOM(key, stickyObj);
 }
 
 function getStickiesArray() {
@@ -67,7 +77,7 @@ function getStickiesArray() {
 }
 
 //此函数不变
-function addStickyToDOM(key, value) {
+function addStickyToDOM(key, stickyObj) {
     var stickies = document.getElementById("stickies");
     var sticky = document.createElement("li");
     /*
@@ -78,8 +88,10 @@ function addStickyToDOM(key, value) {
     picture.setAttribute("class", "delete");
     picture.src = "delete2.png";
     span.setAttribute("class", "sticky");
-    span.innerHTML = value;
+    span.innerHTML = stickyObj.value;
     sticky.setAttribute("id", key);
+
+    sticky.style.backgroundColor = stickyObj.color;
     sticky.appendChild(span);
     sticky.appendChild(picture);
     stickies.appendChild(sticky);
@@ -89,17 +101,19 @@ function addStickyToDOM(key, value) {
 function deleteSticky(e) {
     //parentNode属性可返回某结点的父结点，target为
     // 所点击并生成事件的元素
-    var key = e.target.parentNode.id;
-    localStorage.removeItem(key);
-    var stickiesArray = getStickiesArray();
-    for(var i = 0; i < stickiesArray.length; i++) {
-        if(key == stickiesArray[i]) {
-            //array.splice(index, howmany, item1,....., itemX)
-            stickiesArray.splice(i, 1);
+    if(window.confirm("are you sure to delete this sticky?")){
+        var key = e.target.parentNode.id;
+        localStorage.removeItem(key);
+        var stickiesArray = getStickiesArray();
+        for(var i = 0; i < stickiesArray.length; i++) {
+            if(key == stickiesArray[i]) {
+                //array.splice(index, howmany, item1,....., itemX)
+                stickiesArray.splice(i, 1);
+            }
         }
+        localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
+        removeStickyFromDom(key); 
     }
-    localStorage.setItem("stickiesArray", JSON.stringify(stickiesArray));
-    removeStickyFromDom(key); 
 } 
 
 function removeStickyFromDom(key) {
